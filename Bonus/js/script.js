@@ -1,11 +1,10 @@
 
 // funzione per la creazione dei quadrati
 function squareElement (){
-    let square = document.createElement('div');
-    square.classList.add('square');
-    return square;
-};
-
+    let square = document.createElement('div')
+    square.classList.add('square')
+    return square
+}
 // funzione creazione numero randomica
 function randomNumber (min,max) {
     return Math.floor(Math.random() * (max - min +1) ) + min;
@@ -27,10 +26,9 @@ function arrayBombs (array_bombs, max){
 };
 
 
-
 // funzione che crea la nuova partita
 function createNewGame(safe){
-    let  griglia = document.getElementById('griglia');
+     let  griglia = document.getElementById('griglia');
     // svuoto la griglia
     griglia.innerHTML='';
     let message= document.getElementById('message');
@@ -38,28 +36,48 @@ function createNewGame(safe){
     let array_bombs = []
     console.log (array_bombs)
 
-    for (let i=0; i<16; i++){
+     for (let i=0; i<16; i++){
         let bombNumber = arrayBombs (array_bombs, 100);
         array_bombs.push(bombNumber);
         
+        }
+    console.log (array_bombs,safe)
+
+
+    let level = document.getElementById('level').value;
+    console.log(level);
+    let cellsNumber;
+    switch(level){
+        case '1':
+            cellsNumber =100;
+            break;
+       case '2':
+            cellsNumber =81;
+            break;
+        case '3':
+            cellsNumber =49;
+            break;
     }
-    console.log (array_bombs)
-    createCells(array_bombs, safe)
+    createCells(cellsNumber,array_bombs, safe);
+
+
+
 }
 
-// funzione di creazione della gliglia completa
-function createCells(array_bombs, safe){
-    
-    
-    for ( i = 0; i < 100; i++ ){
-        let square = squareElement ();
-        let cellsPerRow = Math.sqrt(100);
-        square.style.width = `calc(100% /${cellsPerRow})`;
-        square.style.height = square.style.width;
-        square.innerText= i+ 1
-        // console.log(square)
 
-        // aggiungo l'evento al click su quadrato
+// funzione di creazione della gliglia completa
+function createCells(cells, array_bombs, safe){
+    
+        for ( i = 0; i < cells; i++ ){
+            let square = squareElement ();
+            let cellsPerRow = Math.sqrt(cells);
+            square.style.width = `calc(100% /${cellsPerRow})`;
+            square.style.height = square.style.width;
+            square.innerText= i+ 1
+            console.log(square)
+
+            // aggiungo l'evento al click su quadrato
+            // aggiungo l'evento al click su quadrato
         square.addEventListener('click', function (){
         
             if (!array_bombs.includes(parseInt(this.innerText))){
@@ -75,27 +93,21 @@ function createCells(array_bombs, safe){
             }
             console.log(`Hai cliccato sulla casella numero: ${this.innerText}`)
         })
-
-        // clickedSquare(square, array_bombs, safe)
-
-
-        
-        griglia.append(square)
-        
-    }    
+            griglia.append(square)
+            
+        }    
 }
 
 
 let play = document.getElementById('play')
-
+console.log(play)
 let safe=0
 // collego la creazione della griglia al pulsante
 play.addEventListener("click", function(){
 safe
-    
-
  
  createNewGame(safe)
 
 
 });
+
