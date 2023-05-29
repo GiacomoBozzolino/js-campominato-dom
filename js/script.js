@@ -88,10 +88,10 @@ function createCells(array_bombs, safe){
 
 let play = document.getElementById('play')
 
-
+let safe=0
 // collego la creazione della griglia al pulsante
 play.addEventListener("click", function(){
-let safe=0
+safe
     
 
  
