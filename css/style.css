@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+header{
+    height: 100px;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 800;
+}
+
+button{
+    font-size: 20px;
+    padding: 5px 10px;
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 0 20px;
+    transition-duration: 0.4s;
+    
+}
+
+button:hover{
+    background-color: darkblue;
+    
+}
+button:active{
+    transform: translateY(4px);
+}
+
+.row{
+    height: 100%;
+}
+
+.col{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: space-around;
+}
+
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 2rem;
+}
+
+#griglia{
+    
+    display: flex;
+    flex-wrap: wrap;
+    width: 1000px;
+    height: 1000px;
+}
+
+.square{
+    background-color: rgb(255, 131, 30);
+    border: 2px black solid;
+    width: calc(1000px /10);
+    height:calc(1000px /10) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+
+.clicked{
+    background-color: dodgerblue;
+    color: white;
+}
