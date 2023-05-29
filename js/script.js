@@ -1,4 +1,6 @@
 
+
+
 // funzione per la creazione dei quadrati
 function squareElement (){
     let square = document.createElement('div');
@@ -27,8 +29,8 @@ function arrayBombs (array_bombs, max){
 };
 
 // funzione che aggiunge il cambio colore al click
-function clickedSquare(cella, array_bombs, ){
-    let safe=0
+function clickedSquare(cella, array_bombs, safe){
+    
     cella.addEventListener('click', function (){
         if (!array_bombs.includes(parseInt(this.innerText))){
             this.classList.add('clicked');
@@ -46,10 +48,12 @@ function clickedSquare(cella, array_bombs, ){
 }
 
 // funzione che crea la nuova partita
-function createNewGame(){
+function createNewGame(safe){
     let  griglia = document.getElementById('griglia');
     // svuoto la griglia
     griglia.innerHTML='';
+    let message= document.getElementById('message');
+    message.innerHTML='';
     let array_bombs = []
     console.log (array_bombs)
 
@@ -59,12 +63,12 @@ function createNewGame(){
         
     }
     console.log (array_bombs)
-    createCells(array_bombs)
+    createCells(array_bombs, safe)
 }
 
 // funzione di creazione della gliglia completa
-function createCells(array_bombs){
-    let notBomb = 0
+function createCells(array_bombs, safe){
+    
     
     for ( i = 0; i < 100; i++ ){
         let square = squareElement ();
@@ -75,7 +79,7 @@ function createCells(array_bombs){
         // console.log(square)
 
         // aggiungo l'evento al click su quadrato
-        clickedSquare(square, array_bombs, notBomb)
+        clickedSquare(square, array_bombs, safe)
         griglia.append(square)
         
     }    
@@ -84,11 +88,14 @@ function createCells(array_bombs){
 
 let play = document.getElementById('play')
 
+
 // collego la creazione della griglia al pulsante
 play.addEventListener("click", function(){
+let safe=0
+    
 
  
- createNewGame()
+ createNewGame(safe)
 
 
 });
