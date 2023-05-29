@@ -30,8 +30,9 @@ function arrayBombs (array_bombs, max){
 
 // funzione che aggiunge il cambio colore al click
 function clickedSquare(cella, array_bombs, safe){
-    
-    cella.addEventListener('click', function (){
+     
+    cella.addEventListener('click', function (safe){
+        
         if (!array_bombs.includes(parseInt(this.innerText))){
             this.classList.add('clicked');
             safe++
@@ -79,7 +80,26 @@ function createCells(array_bombs, safe){
         // console.log(square)
 
         // aggiungo l'evento al click su quadrato
-        clickedSquare(square, array_bombs, safe)
+        square.addEventListener('click', function (){
+        
+            if (!array_bombs.includes(parseInt(this.innerText))){
+                this.classList.add('clicked');
+                safe++
+                console.log(safe)
+                document.getElementById('message').innerText= `Il tuo punteggio è di: ${safe}`
+                
+            } else {
+                this.classList.add('bomb');
+                document.getElementById('message').innerText= 'BOOM! Hai perso!'
+    
+            }
+            console.log(`Hai cliccato sulla casella numero: ${this.innerText}`)
+        })
+
+        // clickedSquare(square, array_bombs, safe)
+
+
+        
         griglia.append(square)
         
     }    
