@@ -18,17 +18,26 @@ function arrayBombs (array_bombs, max){
     let number
     while (controllo === false) {
         number = randomNumber(1, max)
+        // setto la condizione per uscire dal ciclo while ( se il numero non è contenuto nell'array esco dal ciclo e genero un numero)
         if (!array_bombs.includes(number))
         controllo = true
     } 
-        
+      
     return number;
 };
 
 // funzione che aggiunge il cambio colore al click
-function clickedSquare(cella){
+function clickedSquare(cella, array_bombs){
     cella.addEventListener('click', function (){
-        this.classList.add('clicked');
+        if (array_bombs.includes(parseInt(this.innerText))){
+            this.classList.add('bomb');
+            
+        } else {
+            this.classList.add('clicked');
+            
+        }
+
+
         console.log(`Hai cliccato sulla casella numero: ${this.innerText}`)
     })
 }
@@ -47,11 +56,11 @@ function createNewGame(){
         
     }
     console.log (array_bombs)
-    createCells()
+    createCells(array_bombs)
 }
 
 // funzione di creazione della gliglia completa
-function createCells(){
+function createCells(array_bombs){
     
     for ( i = 0; i < 100; i++ ){
         let square = squareElement ();
@@ -62,7 +71,7 @@ function createCells(){
         // console.log(square)
 
         // aggiungo l'evento al click su quadrato
-        clickedSquare(square)
+        clickedSquare(square, array_bombs)
         griglia.append(square)
         
     }    
