@@ -13,9 +13,16 @@ function randomNumber (min,max) {
 
 // funzione estrazioni 16 numeri da inserire nell'array_bombs
 function arrayBombs (array_bombs, max){
- 
-        let number =randomNumber(1, max)
-        return number
+//  devo aggiungere il controllo perchè non ci siano numeri randomici nell'array
+    let controllo = false 
+    let number
+    while (controllo === false) {
+        number = randomNumber(1, max)
+        if (!array_bombs.includes(number))
+        controllo = true
+    } 
+        
+    return number;
 };
 
 // funzione che aggiunge il cambio colore al click
@@ -39,7 +46,7 @@ function createNewGame(){
         array_bombs.push(bombNumber);
         
     }
-    
+    console.log (array_bombs)
     createCells()
 }
 
