@@ -61,15 +61,14 @@ main{
     
     display: flex;
     flex-wrap: wrap;
-    width: 1000px;
-    height: 1000px;
+    max-width: 1000px;
+    height: 100vh;
 }
 
 .square{
     background-color: rgb(255, 131, 30);
     border: 2px black solid;
-    width: calc(1000px /10);
-    height:calc(1000px /10) ;
+   
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,9 +88,6 @@ main{
 }
 
 
-.col{
-    padding-top: 2rem;
-}
 
 #message{
     font-size: 60px;
